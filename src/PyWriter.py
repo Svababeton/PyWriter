@@ -107,6 +107,8 @@ driver.get('https://at4.typewriter.at/index.php?r=typewriter/runLevel')         
 driver.maximize_window()
 
 time.sleep(3)
+driver.find_element(By.XPATH, '/html/body/div[7]/div[2]/div[1]/div[2]/div[2]/button[1]/p').click()
+time.sleep(1)
 
 userlog = driver.find_element(By.ID, "LoginForm_username")
 passwordlog = driver.find_element(By.ID, "LoginForm_pw")
@@ -115,12 +117,11 @@ passwordlog = driver.find_element(By.ID, "LoginForm_pw")
 
 userlog.send_keys(username)             ### Initialising User log-in.
 passwordlog.send_keys(password)
-
-log_button = driver.find_element(By.XPATH, "/html/body/div[3]/div[2]/div[1]/form/div[3]/input")
+time.sleep(5)
+log_button = driver.find_element(By.XPATH, "/html/body/div[5]/div[2]/div[1]/form/div[3]/input")
 log_button.click()
 time.sleep(5)
-runlevelB = driver.find_element(By.XPATH, "/html/body/div[3]/div[3]/div[1]/div[1]/a/div[2]/b")
-runlevelB.click()
+driver.get('https://at4.typewriter.at/index.php?r=typewriter/runLevel')
 time.sleep(2)
 
 
@@ -131,7 +132,7 @@ def main():
        
         time.sleep(1)
         ###schreibt
-        text1c = driver.find_element(By.ID, "text_todo")
+        text1c = driver.find_element(By.ID, "text_todo_1")
         text1= text1c.text
         text1l = list(text1)
         print(text1l[0])
@@ -146,7 +147,7 @@ def main():
         print (longt)
         
         for x in range(int(longt)):
-            text1c = driver.find_element(By.ID, "text_todo")
+            text1c = driver.find_element(By.ID, "text_todo_1")
             text1= text1c.text
             text1l = list(text1)
             keyboard.press(text1l[0])
